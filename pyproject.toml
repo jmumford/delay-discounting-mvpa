@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "jmumford", email = "jmumford@stanford.edu" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "ipykernel>=6.30.1",
     "ipython>=9.5.0",

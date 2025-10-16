@@ -96,7 +96,7 @@ def load_and_gm_scale_bold_data(
         if roi_mask_name is None:
             raise ValueError("roi_mask_name must be provided for mask_type='roi'.")
 
-        roi_mask_file = Path(cfg.paths.masks_dir) / roi_mask_name
+        roi_mask_file = Path(cfg.masks_dir) / roi_mask_name
         if not roi_mask_file.exists():
             raise FileNotFoundError(f'ROI mask file does not exist: {roi_mask_file}')
 

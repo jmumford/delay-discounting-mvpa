@@ -34,17 +34,11 @@ def resolve_file(cfg: Config, subject_id: str, kind: str) -> Path:
         If kind is invalid or if zero/multiple files are found.
     """
     if kind == 'bold':
-        pattern = (
-            f'{cfg.paths.fmriprep_dir}/sub-{subject_id}/{cfg.paths.bold_file_glob}'
-        )
+        pattern = f'{cfg.fmriprep_dir}/sub-{subject_id}/{cfg.bold_file_glob}'
     elif kind == 'mask':
-        pattern = (
-            f'{cfg.paths.fmriprep_dir}/sub-{subject_id}/{cfg.paths.bold_mask_file_glob}'
-        )
+        pattern = f'{cfg.fmriprep_dir}/sub-{subject_id}/{cfg.bold_mask_file_glob}'
     elif kind == 'behav':
-        pattern = (
-            f'{cfg.paths.behavior_dir}/{subject_id}_{cfg.paths.task_name}_events.tsv'
-        )
+        pattern = f'{cfg.behavior_dir}/{subject_id}_{cfg.task_name}_events.tsv'
     else:
         raise ValueError(
             f"Unknown file kind: {kind!r}. Must be 'bold', 'mask', or 'behav'."
@@ -89,14 +83,14 @@ def load_tsv_data(tsv_file: Path) -> pd.DataFrame:
 
 def get_subids(cfg: Config) -> List[str]:
     """
-    Extract unique subject IDs from cfg.paths.fmriprep_dir.
+    Extract unique subject IDs from cfg.fmriprep_dir.
 
     Looks for directories starting with 'sub-s###'.
 
     Parameters
     ----------
     cfg : Config
-        Configuration object with .paths attributes.
+        Configuration object
 
     Returns
     -------
@@ -104,8 +98,8 @@ def get_subids(cfg: Config) -> List[str]:
         Sorted list of subject IDs (e.g., ['s101', 's102']).
     """
     subids: set[str] = set()
-    for d in os.listdir(cfg.paths.fmriprep_dir):
-        full_path = os.path.join(cfg.paths.fmriprep_dir, d)
+    for d in os.listdir(cfg.fmriprep_dir):
+        full_path = os.path.join(cfg.fmriprep_dir, d)
         if os.path.isdir(full_path):
             match = re.match(r'sub-s(\d+)', d)
             if match:

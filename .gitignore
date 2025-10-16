@@ -31,6 +31,12 @@ env/
 env.bak/
 venv.bak/
 
+# environment file
+.env
+
+# UV cache
+uv_cache/
+
 # VS Code
 .vscode/
 

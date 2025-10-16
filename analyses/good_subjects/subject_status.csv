@@ -1,0 +1,109 @@
+sub_id,include,conclusion,details
+s061,True,Passed all checks,
+s130,True,Passed all checks,
+s144,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s144_discountFix_events.tsv
+s172,True,Passed all checks,
+s192,True,Passed all checks,
+s234,True,Passed all checks,
+s251,True,Passed all checks,
+s358,True,Passed all checks,
+s373,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s445,False,met suggested_exclusion.csv criteria,"missing_more_than_half_the_tasks, MRIQC_fail"
+s465,False,singular response,0 smaller sooner / 120 larger later
+s471,True,Passed all checks,
+s483,True,Passed all checks,
+s491,False,onset beyond scan duration,"max onset=870.99s, scan duration=724.20s"
+s495,False,onset beyond scan duration,"max onset=735.04s, scan duration=724.20s"
+s497,True,Passed all checks,
+s499,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s499_discountFix_events.tsv
+s512,True,Passed all checks,
+s513,False,singular response,114 smaller sooner / 0 larger later
+s518,True,Passed all checks,
+s519,False,singular response,0 smaller sooner / 120 larger later
+s524,True,Passed all checks,
+s525,True,Passed all checks,
+s526,True,Passed all checks,
+s533,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s533_discountFix_events.tsv
+s541,True,Passed all checks,
+s546,True,Passed all checks,
+s548,True,Passed all checks,
+s549,True,Passed all checks,
+s553,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s554,True,Passed all checks,
+s555,True,Passed all checks,
+s556,True,Passed all checks,
+s557,True,Passed all checks,
+s558,False,singular response,0 smaller sooner / 120 larger later
+s561,True,Passed all checks,
+s567,True,Passed all checks,
+s568,True,Passed all checks,
+s570,True,Passed all checks,
+s572,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s572_discountFix_events.tsv
+s573,True,Passed all checks,
+s574,True,Passed all checks,
+s577,True,Passed all checks,
+s579,True,Passed all checks,
+s581,True,Passed all checks,
+s582,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s583,True,Passed all checks,
+s584,True,Passed all checks,
+s585,True,Passed all checks,
+s586,False,singular response,120 smaller sooner / 0 larger later
+s587,True,Passed all checks,
+s588,False,met suggested_exclusion.csv criteria,"missing_more_than_half_the_tasks, MRIQC_fail"
+s589,True,Passed all checks,
+s590,True,Passed all checks,
+s591,True,Passed all checks,
+s592,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s593,True,Passed all checks,
+s594,True,Passed all checks,
+s595,True,Passed all checks,
+s596,True,Passed all checks,
+s597,True,Passed all checks,
+s598,False,singular response,0 smaller sooner / 120 larger later
+s601,True,Passed all checks,
+s602,True,Passed all checks,
+s603,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s603_discountFix_events.tsv
+s604,True,Passed all checks,
+s605,False,singular response,0 smaller sooner / 120 larger later
+s606,True,Passed all checks,
+s607,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s608,False,singular response,0 smaller sooner / 120 larger later
+s609,True,Passed all checks,
+s610,True,Passed all checks,
+s611,True,Passed all checks,
+s612,True,Passed all checks,
+s613,True,Passed all checks,
+s614,True,Passed all checks,
+s615,True,Passed all checks,
+s616,True,Passed all checks,
+s617,True,Passed all checks,
+s618,True,Passed all checks,
+s619,False,met suggested_exclusion.csv criteria,MRIQC_fail
+s621,True,Passed all checks,
+s622,True,Passed all checks,
+s623,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s624,True,Passed all checks,
+s626,True,Passed all checks,
+s627,True,Passed all checks,
+s628,True,Passed all checks,
+s629,True,Passed all checks,
+s631,True,Passed all checks,
+s633,True,Passed all checks,
+s634,True,Passed all checks,
+s635,True,Passed all checks,
+s636,True,Passed all checks,
+s637,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s638,True,Passed all checks,
+s639,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s639_discountFix_events.tsv
+s640,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s640_discountFix_events.tsv
+s641,True,Passed all checks,
+s642,True,Passed all checks,
+s643,True,Passed all checks,
+s644,True,Passed all checks,
+s645,True,Passed all checks,
+s646,False,met suggested_exclusion.csv criteria,"missing_more_than_half_the_tasks, missing_beh_data"
+s647,False,met suggested_exclusion.csv criteria,missing_beh_data
+s648,True,Passed all checks,
+s649,False,singular response,0 smaller sooner / 117 larger later
+s650,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks

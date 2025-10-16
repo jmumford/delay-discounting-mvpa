@@ -1,0 +1,31 @@
+- id: data_orientation
+  name: Code collection for data orientation
+  description: 'Notebooks for plotting various aspects of raw behavioral and other
+    data as needed
+
+    '
+  code_dir: analyses/data_orientation
+  script_entry: None
+  notebook_entry:
+  - get_good_subjects.ipynb
+  - test.ipynb
+  output_dir: None
+  status: ongoing
+  last_updated: 2025-10-16
+  authors:
+  - Jeanette Mumford
+- id: get_good_subjects
+  name: Define good and bad subjects
+  description: 'Assess each subject against multiple criteria to provide a  simple
+    subject_status.csv in output_dir that defines  good/bad subjects and why they
+    were excluded.
+
+    '
+  code_dir: analyses/good_subjects
+  script_entry: None
+  notebook_entry: get_good_subjects.ipynb
+  output_dir: get_good_subjects/
+  status: completed
+  last_updated: 2025-10-16
+  authors:
+  - Jeanette Mumford

@@ -1,0 +1,13 @@
+id: "get_good_subjects"
+name: "Define good and bad subjects"
+description: >
+  Assess each subject against multiple criteria to provide a 
+  simple subject_status.csv in output_dir that defines 
+  good/bad subjects and why they were excluded.
+code_dir: "analyses/good_subjects"
+script_entry: "None"
+notebook_entry: "get_good_subjects.ipynb"
+output_dir: "get_good_subjects/"
+status: "completed"
+last_updated: 2025-10-16
+authors: ["Jeanette Mumford"]

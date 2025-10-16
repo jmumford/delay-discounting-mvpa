@@ -1,0 +1,4 @@
+| ID | Name | Description | Code Dir | Notebook | Script | Status | Authors |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| data_orientation | Code collection for data orientation | Notebooks for plotting various aspects of raw behavioral and other data as needed  | analyses/data_orientation | get_good_subjects.ipynb, test.ipynb | None | ongoing | Jeanette Mumford |
+| get_good_subjects | Define good and bad subjects | Assess each subject against multiple criteria to provide a  simple subject_status.csv in output_dir that defines  good/bad subjects and why they were excluded.  | analyses/good_subjects | get_good_subjects.ipynb | None | completed | Jeanette Mumford |
