@@ -5,7 +5,7 @@
 | ID | Description | Status | Notes |
 |----|------------|--------|-------|
 | data_orientation | Notebooks for plotting various aspects of raw behavioral and other data as needed | ongoing | None |
-| get_good_subjects | Assess each subject against multiple criteria to provide a  simple subject_status.csv in output_dir that defines  good/bad subjects and why they were excluded. | completed | Josh needs to approve all exclusion criteria |
+| get_good_subjects | Assess each subject against multiple criteria to provide a  simple subject_status.csv in output_dir that defines  good/bad subjects and why they were excluded. | completed | Josh approved exclusion criteria |
 | lsa_modeling | The notebook develops the code, which is then run using the batch/py files on all subjects who passes all exclusion  criteria | complete | Estimates need to be evaluated for outliers prior to further use |
 
 ---
@@ -38,8 +38,8 @@
 **Notebook Entry:** get_good_subjects.ipynb<br>
 **Output Directory:** get_good_subjects/<br>
 **Hypothesis:** NA<br>
-**Conclusion:** 77 subjects pass the exclusion criteria<br>
-**Notes:** Josh needs to approve all exclusion criteria<br>
+**Conclusion:** 85 subjects pass the exclusion criteria<br>
+**Notes:** Josh approved exclusion criteria<br>
 **Status:** completed<br>
 **Last Updated:** 2025-10-16<br>
 **Authors:** Jeanette Mumford<br>

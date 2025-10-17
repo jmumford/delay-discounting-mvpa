@@ -30,8 +30,8 @@
   notebook_entry: get_good_subjects.ipynb
   output_dir: get_good_subjects/
   hypothesis: NA
-  conclusion: 77 subjects pass the exclusion criteria
-  notes: Josh needs to approve all exclusion criteria
+  conclusion: 85 subjects pass the exclusion criteria
+  notes: Josh approved exclusion criteria
   status: completed
   last_updated: 2025-10-16
   authors:
