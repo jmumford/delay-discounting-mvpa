@@ -7,8 +7,8 @@ s192,True,Passed all checks,
 s234,True,Passed all checks,
 s251,True,Passed all checks,
 s358,True,Passed all checks,
-s373,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
-s445,False,met suggested_exclusion.csv criteria,"missing_more_than_half_the_tasks, MRIQC_fail"
+s373,True,Passed all checks,
+s445,False,met suggested_exclusion.csv criteria,MRIQC_fail
 s465,False,singular response,0 smaller sooner / 120 larger later
 s471,True,Passed all checks,
 s483,True,Passed all checks,
@@ -28,7 +28,7 @@ s541,True,Passed all checks,
 s546,True,Passed all checks,
 s548,True,Passed all checks,
 s549,True,Passed all checks,
-s553,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s553,True,Passed all checks,
 s554,True,Passed all checks,
 s555,True,Passed all checks,
 s556,True,Passed all checks,
@@ -44,17 +44,17 @@ s574,True,Passed all checks,
 s577,True,Passed all checks,
 s579,True,Passed all checks,
 s581,True,Passed all checks,
-s582,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s582,True,Passed all checks,
 s583,True,Passed all checks,
 s584,True,Passed all checks,
 s585,True,Passed all checks,
 s586,False,singular response,120 smaller sooner / 0 larger later
 s587,True,Passed all checks,
-s588,False,met suggested_exclusion.csv criteria,"missing_more_than_half_the_tasks, MRIQC_fail"
+s588,False,met suggested_exclusion.csv criteria,MRIQC_fail
 s589,True,Passed all checks,
 s590,True,Passed all checks,
 s591,True,Passed all checks,
-s592,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s592,True,Passed all checks,
 s593,True,Passed all checks,
 s594,True,Passed all checks,
 s595,True,Passed all checks,
@@ -67,7 +67,7 @@ s603,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/
 s604,True,Passed all checks,
 s605,False,singular response,0 smaller sooner / 120 larger later
 s606,True,Passed all checks,
-s607,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s607,True,Passed all checks,
 s608,False,singular response,0 smaller sooner / 120 larger later
 s609,True,Passed all checks,
 s610,True,Passed all checks,
@@ -82,7 +82,7 @@ s618,True,Passed all checks,
 s619,False,met suggested_exclusion.csv criteria,MRIQC_fail
 s621,True,Passed all checks,
 s622,True,Passed all checks,
-s623,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s623,True,Passed all checks,
 s624,True,Passed all checks,
 s626,True,Passed all checks,
 s627,True,Passed all checks,
@@ -93,7 +93,7 @@ s633,True,Passed all checks,
 s634,True,Passed all checks,
 s635,True,Passed all checks,
 s636,True,Passed all checks,
-s637,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s637,True,Passed all checks,
 s638,True,Passed all checks,
 s639,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s639_discountFix_events.tsv
 s640,False,behav missing,No files found for 'behav' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files/s640_discountFix_events.tsv
@@ -102,8 +102,8 @@ s642,True,Passed all checks,
 s643,True,Passed all checks,
 s644,True,Passed all checks,
 s645,True,Passed all checks,
-s646,False,met suggested_exclusion.csv criteria,"missing_more_than_half_the_tasks, missing_beh_data"
-s647,False,met suggested_exclusion.csv criteria,missing_beh_data
+s646,False,BOLD missing,No files found for 'bold' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/fmriprep/sub-s646/ses*/func/*discountFix*MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
+s647,False,BOLD missing,No files found for 'bold' with pattern: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/fmriprep/sub-s647/ses*/func/*discountFix*MNI152NLin2009cAsym_desc-preproc_bold.nii.gz
 s648,True,Passed all checks,
 s649,False,singular response,0 smaller sooner / 117 larger later
-s650,False,met suggested_exclusion.csv criteria,missing_more_than_half_the_tasks
+s650,True,Passed all checks,

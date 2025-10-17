@@ -228,6 +228,8 @@ def create_design_matrices(
 
     # exclusion previously define by Patrick
     exclusion_data = get_exclusion_data(cfg)
+    # Josh doesn't want to exclude these subjects
+    exclusion_data = exclusion_data[['subject', 'task', 'MRIQC_fail']]
 
     for subid in subids:
         print(f'Processing {subid}...')
