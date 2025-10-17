@@ -1,7 +1,9 @@
 # Delay Discounting Classifier Analysis Code
 
 Code for running classifier analyses on delay discounting fMRI data.
-Location: `/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa`
+
+**Analysis Location**: `/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa`
+
 ---
 
 ## Setup
