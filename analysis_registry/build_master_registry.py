@@ -10,7 +10,7 @@ import yaml
 
 ANALYSIS_DIR = Path(__file__).parent / 'analyses'
 MASTER_YAML = Path(__file__).parent / 'master_registry.yaml'
-MASTER_MD = Path(__file__).parent / 'master_registry.md'
+MASTER_MD = Path(__file__).parent / 'README.md'
 
 
 def load_yaml_files(yaml_dir: Path):
