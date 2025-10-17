@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=16G
-#SBATCH --array=0-89%20   # 90 subjects total, 20 run in parallel max 
+#SBATCH --array=-89%20   # 90 subjects total, 20 run in parallel max 
 
  
 
@@ -16,6 +16,8 @@ PROJECT_ROOT="/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_di
 SCRIPT_DIR="$PROJECT_ROOT/analyses/lsa_modeling"
 OUTPUT_DIR="/oak/stanford/groups/russpold/data/uh2/aim1/derivatives/delay_discounting_mvpa/lsa_estimates"
 UV_SETUP="$PROJECT_ROOT/setup_uv.sh"
+# Note $0 will not have the proper behavior on slurm, so this is necessary
+THIS_BASH_SCRIPT="$SCRIPT_DIR/run_lsa_all.batch"
 
 source $UV_SETUP
 
@@ -28,3 +30,9 @@ uv --directory "$PROJECT_ROOT" run \
     "$SCRIPT_DIR/run_lsa.py" \
     --subid "$SUBID" \
     --output_dir $OUTPUT_DIR
+
+uv --directory "$PROJECT_ROOT" run \
+    -m delay_discounting_mvpa.utils.provenance \
+    --output_dir "$OUTPUT_DIR" \
+    --analysis_name "lsa_modeling" \
+    --extra_info "{\"batch_script\": \"$THIS_BASH_SCRIPT\", \"slurm_jobid\": \"$SLURM_JOB_ID\"}"
