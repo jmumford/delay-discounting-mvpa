@@ -1,0 +1,19 @@
+id: "lsa_modeling"
+name: "LSA setup and execution"
+description: >
+  The notebook develops the code, which is then run using
+  the batch/py files on all subjects who passes all exclusion 
+  criteria
+code_dir: "analyses/lsa_modeling"
+script_entry: 
+  - "run_lsa.py"
+  - "run_lsa.batch"
+notebook_entry: 
+  - "dev_lsa_code.ipynb"
+output_dir: "/oak/stanford/groups/russpold/data/uh2/aim1/derivatives/delay_discounting_mvpa/lsa_estimates"
+hypothesis: "NA"
+conclusion: "Models ran successfully for 77 subjects"
+notes: "Estimates need to be evaluated for outliers prior to further use"
+status: "complete"
+last_updated: 2025-10-17
+authors: ["Jeanette Mumford"]

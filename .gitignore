@@ -37,6 +37,9 @@ venv.bak/
 # UV cache
 uv_cache/
 
+# slurm logs
+slurm_logs/
+
 # VS Code
 .vscode/
 

@@ -1,13 +1,17 @@
 id: "data_orientation"
-name: "Code collection to orient myself with the data"
+name: "Data figure playground"
 description: >
   Notebooks for plotting various aspects of raw behavioral
   and other data as needed
 code_dir: "analyses/data_orientation"
+dependencies: "None"
 script_entry: "None"
 notebook_entry: 
   - "get_good_subjects.ipynb"
 output_dir: "None"
+hypothesis: "NA"
+conclusion: "NA"
+notes: "None"
 status: "ongoing"
 last_updated: 2025-10-16
 authors: ["Jeanette Mumford"]

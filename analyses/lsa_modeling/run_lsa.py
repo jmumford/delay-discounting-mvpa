@@ -2,7 +2,7 @@
 
 import argparse
 
-from delay_discounting_mvpa.config_loader import Config
+from delay_discounting_mvpa.config_loader import load_config
 from delay_discounting_mvpa.design_utils import create_design_matrices
 from delay_discounting_mvpa.fmri_io import load_and_gm_scale_bold_data
 from delay_discounting_mvpa.fmri_model import (
@@ -16,11 +16,11 @@ def main(
     subid: str, hp_filter_cutoff: float, outdir: str, config_file: str = 'config.yaml'
 ):
     # Load config
-    cfg = Config(config_file, validate=False)
+    cfg = load_config(config_file)
 
     # fMRI setup
-    tr = cfg.fmri.tr
-    _, bold_paths, design_matrices = create_design_matrices(
+    tr = cfg.tr
+    _, bold_paths, design_matrices, _ = create_design_matrices(
         cfg, [subid], tr, hp_filter_cutoff
     )
     print(design_matrices[0].columns)
@@ -50,7 +50,9 @@ if __name__ == '__main__':
     )
     parser.add_argument('--output_dir', required=True, help='Directory to save outputs')
     parser.add_argument(
-        '--config', default='config.yaml', help='Path to configuration YAML'
+        '--config',
+        default='/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa/configs/config.yaml',
+        help='Path to configuration YAML',
     )
 
     args = parser.parse_args()

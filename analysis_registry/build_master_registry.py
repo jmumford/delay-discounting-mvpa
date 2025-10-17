@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 """
 Build the master analysis registry by combining all YAML files in analyses/
-and optionally generating a human-readable Markdown summary.
+and generating a human-readable Markdown summary (block format).
 """
 
 from pathlib import Path
-from typing import Any
-
 import yaml
 
 ANALYSIS_DIR = Path(__file__).parent / 'analyses'
@@ -17,7 +15,7 @@ MASTER_MD = Path(__file__).parent / 'master_registry.md'
 def load_yaml_files(yaml_dir: Path):
     """Load all YAML files in a directory and return a list of dicts."""
     all_entries = []
-    for yaml_file in yaml_dir.glob('*.yaml'):
+    for yaml_file in sorted(yaml_dir.glob('*.yaml')):
         with open(yaml_file, 'r') as f:
             data = yaml.safe_load(f)
             all_entries.append(data)
@@ -29,57 +27,48 @@ def write_master_yaml(entries, output_file: Path):
         yaml.safe_dump(entries, f, sort_keys=False)
 
 
-def stringify_entry(entry: Any) -> str:
-    """Convert a YAML field that may be a list or None into a string for Markdown."""
+def stringify_entry(entry):
+    """Convert YAML lists, None, or scalars into strings."""
     if entry is None:
-        return 'None'
+        return "None"
     if isinstance(entry, list):
-        return ', '.join(entry)
+        if not entry:
+            return "None"
+        return ", ".join(str(x) for x in entry)
     return str(entry)
 
 
 def write_markdown_summary(entries, output_file: Path):
-    """Generate a simple Markdown table from the YAML entries."""
-    headers = [
-        'ID',
-        'Name',
-        'Description',
-        'Code Dir',
-        'Notebook',
-        'Script',
-        'Status',
-        'Authors',
-    ]
-    md_lines = [
-        '| ' + ' | '.join(headers) + ' |',
-        '| ' + ' | '.join(['---'] * len(headers)) + ' |',
-    ]
+    """Write a section-style Markdown summary for each analysis entry."""
+    md_lines = ["# Master Analysis Registry\n"]
 
     for e in entries:
-        row = [
-            e.get('id', ''),
-            e.get('name', ''),
-            e.get('description', '').replace(
-                '\n', ' '
-            ),  # Flatten multiline descriptions
-            e.get('code_dir', ''),
-            stringify_entry(e.get('notebook_entry')),
-            stringify_entry(e.get('script_entry')),
-            e.get('status', ''),
-            ', '.join(e.get('authors', [])),
-        ]
-        md_lines.append('| ' + ' | '.join(row) + ' |')
+        md_lines.append(f"## {e.get('id', 'Unknown ID')}")
+        md_lines.append(f"**Name:** {e.get('name', 'None')}")
+        md_lines.append(f"**Description:** {e.get('description', 'None').strip()}")
+        md_lines.append(f"**Code Directory:** {e.get('code_dir', 'None')}")
+        md_lines.append(f"**Dependencies:** {stringify_entry(e.get('dependencies'))}")
+        md_lines.append(f"**Script Entry:** {stringify_entry(e.get('script_entry'))}")
+        md_lines.append(f"**Notebook Entry:** {stringify_entry(e.get('notebook_entry'))}")
+        md_lines.append(f"**Output Directory:** {stringify_entry(e.get('output_dir'))}")
+        md_lines.append(f"**Hypothesis:** {stringify_entry(e.get('hypothesis'))}")
+        md_lines.append(f"**Conclusion:** {stringify_entry(e.get('conclusion'))}")
+        md_lines.append(f"**Notes:** {stringify_entry(e.get('notes'))}")
+        md_lines.append(f"**Status:** {stringify_entry(e.get('status'))}")
+        md_lines.append(f"**Last Updated:** {stringify_entry(e.get('last_updated'))}")
+        md_lines.append(f"**Authors:** {stringify_entry(e.get('authors'))}")
+        md_lines.append("\n---\n")
 
     with open(output_file, 'w') as f:
-        f.write('\n'.join(md_lines))
+        f.write("\n".join(md_lines))
 
 
 def main():
     entries = load_yaml_files(ANALYSIS_DIR)
     write_master_yaml(entries, MASTER_YAML)
     write_markdown_summary(entries, MASTER_MD)
-    print(f'Master YAML written to {MASTER_YAML}')
-    print(f'Markdown summary written to {MASTER_MD}')
+    print(f"Master YAML written to {MASTER_YAML}")
+    print(f"Markdown summary written to {MASTER_MD}")
 
 
 if __name__ == '__main__':

@@ -155,100 +155,6 @@ def create_design_matrix(
     return desmtx_conv
 
 
-def create_design_matrices_OLD(
-    cfg, subids: List[str], tr: float, hp_filter_cutoff: float
-) -> Tuple[List[str], List[str], List[pd.DataFrame]]:
-    """
-    Create first-level design matrices for each subject.
-
-    Returns:
-        valid_subids: list of subjects successfully processed
-        bold_paths: list of BOLD paths corresponding to valid subjects
-        design_matrices: list of DataFrames, one per subject
-        hp_filter_cutoff: high-pass filter cutoff frequency in Hz
-    """
-    valid_subids = []
-    bold_paths = []
-    design_matrices = []
-
-    for subid in subids:
-        print(f'Processing {subid}...')
-        # Load behavioral data
-        try:
-            behav_file = resolve_file(cfg, subid, 'behav')
-            events_data_loop = load_tsv_data(behav_file)
-        except (FileNotFoundError, KeyError, ValueError) as e:
-            print(f'Skipping {subid} (behav error): {e}')
-            continue
-
-        # Load BOLD path
-        try:
-            bold_file = resolve_file(cfg, subid, 'bold')
-        except (FileNotFoundError, KeyError, ValueError) as e:
-            print(f'Skipping {subid} (BOLD missing): {e}')
-            continue
-
-        # Try to get number of TRs from header without loading full data
-        try:
-            bold_img = nib.load(bold_file)  # loads header only lazily
-            n_scans = bold_img.shape[-1]
-            scan_duration = n_scans * tr
-        except Exception as e:
-            print(f'Skipping {subid} (cannot read BOLD header): {e}')
-            continue
-
-        # Prepare events DataFrame
-        events = pd.DataFrame(
-            {
-                'onset': events_data_loop['onset'],
-                'duration': events_data_loop['duration'],
-                'trial_index': np.arange(len(events_data_loop)),
-            }
-        )
-
-        # Remove trials with negative onsets
-        num_negative = (events['onset'] < 0).sum()
-        if num_negative > 0:
-            print(f'{subid}: removing {num_negative} trial(s) with negative onset(s)')
-            events = events[events['onset'] >= 0].reset_index(drop=True)
-
-        # Create trial_type after filtering
-        events['trial_type'] = (
-            events_data_loop.loc[events.index, 'choice']
-            + '_'
-            + (events['trial_index'] + 1).astype(str)
-        )
-
-        # Check that all events fit within the scan duration
-        max_onset = events['onset'].max()
-        if max_onset > scan_duration:
-            print(
-                f'Skipping {subid}: last event onset ({max_onset:.2f}s) exceeds '
-                f'scan duration ({scan_duration:.2f}s)'
-            )
-            continue
-
-        # Make design matrix
-        try:
-            design_matrix = create_design_matrix(
-                events[['onset', 'duration', 'trial_type']],
-                hp_filter_cutoff,
-                oversampling=10,
-                tr=tr,
-                num_trs=n_scans,
-            )
-        except Exception as e:
-            print(f'Skipping {subid} (design matrix error): {e}')
-            continue
-
-        # Store results
-        valid_subids.append(subid)
-        bold_paths.append(bold_file)
-        design_matrices.append(design_matrix)
-
-    return valid_subids, bold_paths, design_matrices
-
-
 def get_exclusion_data(cfg: Config) -> pd.DataFrame:
     """
     Load and preprocess the suggested_exclusions.csv file.
@@ -343,11 +249,13 @@ def create_design_matrices(
             nonzero_cols = sub_excl_row.drop(columns=['subject', 'task']).astype(bool)
             criteria_met = nonzero_cols.columns[nonzero_cols.iloc[0]].tolist()
             if criteria_met:
-                reason = (
-                    'met suggested_exclusion.csv criteria: ' + ', '.join(criteria_met)
+                reason = 'met suggested_exclusion.csv criteria: ' + ', '.join(
+                    criteria_met
                 )
                 print(f'Skipping {subid} ({reason})')
-                status_records.append({'sub_id': subid, 'include': False, 'reason': reason})
+                status_records.append(
+                    {'sub_id': subid, 'include': False, 'reason': reason}
+                )
                 continue
 
         # --- Check for both choice types ---

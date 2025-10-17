@@ -11,4 +11,5 @@ module load gcc/12.4.0
 module load uv
 
 # Export UV environment variables from .env
-export $(cat .env | xargs)
+PROJECT_ROOT="/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa"
+export $(cat "$PROJECT_ROOT/.env" | xargs)
