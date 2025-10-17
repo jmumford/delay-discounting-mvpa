@@ -10,6 +10,7 @@ module load python/3.12.1
 module load gcc/12.4.0
 module load uv
 
-# Export UV environment variables from .env
+export UV_PYTHON=$(which python3)
+
 PROJECT_ROOT="/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa"
-export $(cat "$PROJECT_ROOT/.env" | xargs)
+export UV_CACHE_DIR=$PROJECT_ROOT/uv_cache
