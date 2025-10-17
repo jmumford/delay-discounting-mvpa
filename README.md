@@ -1,49 +1,85 @@
 # Delay Discounting Classifier Analysis Code
 
 Code for running classifier analyses on delay discounting fMRI data.
+Location: `/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa`
+---
 
 ## Setup
 
-1. Install [uv](https://github.com/astral-sh/uv).
-2. If you are on **Sherlock**:
-   - Request an interactive compute session (do not run on the login node).
-   - Load GCC:
-     ```bash
-     module load gcc/12.4.0
-     ```
-3. Clone this repository and `cd` into the root directory (where `pyproject.toml` is located).
-4. Run:
+1. **Load the environment** by sourcing the setup script:  
    ```bash
-   uv sync
+   source setup_uv.sh
    ```
+   This sets up modules, Python, and project environment variables.  
 
-## Directory structure
+> If you are on Sherlock, the virtual environment is already prepared (`.vnenv`), so no further setup is needed.  
+> Only need to run prior to using `uv add` or `uv sync`
+
+---
+
+## Directory structure (top-level)
 
 ```
 .
-├── analysis_code
-│   ├── notebooks          # Notebooks used to test and develop code
-│   └── scripts            # Main scripts, batch scripts, and supporting files
-├── configs                # Configuration YAML files
+├── analyses                # Analysis-specific code directories
+├── analysis_registry       # Summaries of analyses for each directory in analyses
+├── configs                 # Configuration YAML files for analyses (paths, rt, etc.)
+├── src                     # Core Python package code
+├── setup_uv.sh             # Script to set up environment modules and variables
+├── slurm_logs              # Output logs from SLURM jobs
 ├── pyproject.toml
 ├── README.md
-└── src
-    └── delay_discounting_mvpa  # Core Python package code
+├── .env                    # Environment variable settings for uv
+├── .gitignore
+├── LICENSE
+├── uv_cache
+├── uv.lock
+├── .venv
+└── .python-version
 ```
+> Only the first four directories are relevant for running or understanding analyses. The rest are for project/environment setup and version control.
 
-## Main scripts
+---
 
-- `analysis_code/notebooks`: contains Jupyter notebooks used to test and develop the code.
-- `analysis_code/scripts`: contains the main scripts for running analyses, including:
-  - Batch scripts for SLURM
-  - Python scripts called by the batch scripts
-  - Supporting `.txt` files referenced by the scripts
+## Analyses
+
+- **`analyses/`**: Each subdirectory contains:
+  - `notebooks/`: Jupyter notebooks for testing and developing code.  
+  - `scripts/`: Python and batch scripts for executing analyses.  
+
+- **`analysis_registry/`**: yaml files and a Markdown summaries of all analyses, including:
+  - Individual `.yaml` files for each analysis (in /analysis_registry/analyses)
+  - Combined `master_registry.yaml`
+  - Github friendly README (same info as `master_registry.yaml`)
+      - Quick summary table for all analyses  
+      - Detailed reports for each analysis  
+
+- **`configs/`**: YAML configuration files used by analyses. Contains paths, rt and other settings that are used in various analyses.
+
+---
 
 ## Usage
 
-1. Edit the configuration file in `configs/config.yaml` as needed (this shouldn't be needed!).
-2. Launch analyses via the batch scripts in `analysis_code/scripts`. For example:
+1. Source the environment:  
    ```bash
-   sbatch run_lsa_all.batch
+   source setup_uv.sh
    ```
-3. Output (beta series, logs, etc.) will be saved according to the paths specified in your batch scripts and configuration.
+2. Run analyses in notebooks or using batch scripts, which should be contained in corresponding analysis directory.
+  - batch scripts should include this to load the prep `uv` and then the following will run your script using the uv `.venv`.
+
+      ```
+      PROJECT_ROOT="/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa"
+      UV_SETUP="$PROJECT_ROOT/setup_uv.sh"
+      source $UV_SETUP
+
+      uv --directory "$PROJECT_ROOT" run python myscript.py
+      ```
+3. Outputs (beta series, logs, etc.) are saved according to paths specified in the scripts and configuration files.
+
+---
+
+### Notes for New Researchers
+
+- Check `analysis_registry/README.md` (or `master_registry.yaml`) to understand which analyses have been run, status, and notes.  
+- `analyses/*` directories contain notebooks (code development, figures, QA) and python scripts (analysis code typically paried with a batch script).  Take care in editing any scripts in directories created by others, as this could break analysis provenance.  
+- `setup_uv.sh` must be run before executing scripts to ensure proper environment variables and module versions are loaded.
