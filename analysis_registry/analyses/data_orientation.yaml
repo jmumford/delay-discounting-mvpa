@@ -7,7 +7,7 @@ code_dir: "analyses/data_orientation"
 dependencies: "None"
 script_entry: "None"
 notebook_entry: 
-  - "get_good_subjects.ipynb"
+  - "looking_at_data.ipynb"
 output_dir: "None"
 hypothesis: "NA"
 conclusion: "NA"
