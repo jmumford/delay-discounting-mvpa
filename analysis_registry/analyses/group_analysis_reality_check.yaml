@@ -1,0 +1,19 @@
+id: "group_analysis_reality_check"
+name: "Assessing beta series estimates"
+description: >
+  Checking how well averaging beta maps recreates a standard
+  analysis group map of the choice contrast.
+code_dir: "analyses/group_analysis_reality_check"
+dependencies: "None"
+script_entry: "None"
+notebook_entry: 
+  - "develop_choice_contrast_comparison.ipynb"
+output_dir: "None"
+hypothesis: "NA"
+conclusion: >
+  There is a very weak correspondence between the two group maps
+  indicating there is likely low SNR in the beta map estimates.
+notes: "None"
+status: "complete"
+last_updated: 2025-10-20
+authors: ["Jeanette Mumford"]
