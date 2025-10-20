@@ -1,0 +1,21 @@
+id: "pattern_similarity_exploration"
+name: "Reality check analyses in motor ROI for pattern similarity"
+description: >
+  Exploring the behavior of the RSA matrices and analyses we plan to run
+  more widely.  Focusing on relationships that should be highly powered 
+  such as correlations with RT and differences by choice.
+code_dir: "analyses/pattern_similarity_exploration"
+script_entry: "None"
+notebook_entry: 
+  - "dev_lsa_code.ipynb"
+output_dir: "None"
+hypothesis: >
+   Do relationships we expect to be present in the motor ROI exist?  
+   Do RSA values differ by choice and do they relate to RT distance?
+conclusion: >
+  WIP, but aside from a weak correlation between BOLD/RT distances, 
+  I don't see much here.
+notes: "Get feedback from Josh"
+status: "in progress"
+last_updated: 2025-10-20
+authors: ["Jeanette Mumford"]
