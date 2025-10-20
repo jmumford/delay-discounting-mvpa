@@ -1,10 +1,7 @@
 data_root: /oak/stanford/groups/russpold/data/uh2/aim1
 fmriprep_dir: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/fmriprep
-behavior_dir: /oak/stanford/groups/russpold/data/uh2/aim1/behavioral_data/event_files
-output_root: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/mvpa_analysis
-output_dir: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/mvpa_analysis/delay_discounting_results
-behavioral_output: behavioral_analysis
-mvpa_output: mvpa_analysis
+bids_dir: /oak/stanford/groups/russpold/data/uh2/aim1/BIDS
+output_root: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/delay_discounting_mvpa/
 # These three fields are used together to build the file path pattern for locating BOLD fMRI data.
 # Because session numbers can vary, we use wildcards ("ses*") in the folder path.
 # The expected data files are located under each subject's directory, in:
@@ -15,20 +12,9 @@ mvpa_output: mvpa_analysis
 task_name: "discountFix"
 bold_func_glob: "ses*/func/"
 bold_data_suffix: "*MNI152NLin2009cAsym_desc-preproc_bold.nii.gz"
-# ROI files information
-# Assumes all masks are in the same directory and the directory will be prepended to each mask filename in
-# the paths dataclass
+mask_data_suffix: "*MNI152NLin2009cAsym_desc-brain_mask.nii.gz"
+behav_func_glob: "ses*/func/"
+behav_data_suffix: "*events.tsv"
+# ROI mask location
 masks_dir: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/masks
-core_mask_files:
-  striatum: striatum_mask.nii.gz
-  dlpfc: dlpfc_mask.nii.gz
-  vmpfc: vmpfc_mask.nii.gz
-optional_mask_files:
-  left_striatum: left_striatum_mask.nii.gz
-  right_striatum: right_striatum_mask.nii.gz
-  left_dlpfc: left_dlpfc_mask.nii.gz
-  right_dlpfc: right_dlpfc_mask.nii.gz
-  acc: acc_mask.nii.gz
-  ofc: ofc_mask.nii.gz
-
 tr: 0.68
