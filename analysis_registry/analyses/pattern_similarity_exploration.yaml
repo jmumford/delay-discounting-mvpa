@@ -7,8 +7,8 @@ description: >
 code_dir: "analyses/pattern_similarity_exploration"
 script_entry: "None"
 notebook_entry: 
-  - "dev_lsa_code.ipynb"
-output_dir: "None"
+  - "motor_roi_exploration.ipynb"
+output_dir: "analyses/pattern_similarity_exploration (contains summary pdf)"
 hypothesis: >
    Do relationships we expect to be present in the motor ROI exist?  
    Do RSA values differ by choice and do they relate to RT distance?
