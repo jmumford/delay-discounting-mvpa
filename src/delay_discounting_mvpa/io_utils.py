@@ -38,7 +38,7 @@ def resolve_file(cfg: Config, subject_id: str, kind: str) -> Path:
     elif kind == 'mask':
         pattern = f'{cfg.fmriprep_dir}/sub-{subject_id}/{cfg.bold_mask_file_glob}'
     elif kind == 'behav':
-        pattern = f'{cfg.behavior_dir}/{subject_id}_{cfg.task_name}_events.tsv'
+        pattern = f'{cfg.bids_dir}/sub-{subject_id}/{cfg.behav_file_glob}'
     else:
         raise ValueError(
             f"Unknown file kind: {kind!r}. Must be 'bold', 'mask', or 'behav'."

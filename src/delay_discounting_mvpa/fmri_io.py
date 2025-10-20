@@ -115,3 +115,77 @@ def load_and_gm_scale_bold_data(
         return roi_data_scaled, roi_masker
 
     raise ValueError(f'Unknown mask_type: {mask_type!r}')
+
+
+def load_bold_estimates(
+    cfg,
+    contrast_file: Path,
+    mask_type: str = 'brain',
+    roi_mask_name: Optional[str] = None,
+) -> Tuple[np.ndarray, NiftiMasker]:
+    """
+    Load unscaled BOLD estimate data (e.g., beta or contrast maps) for the whole brain
+    or for a specific ROI.
+
+    Parameters
+    ----------
+    cfg : Config
+        Configuration object containing directory paths and other settings.
+    contrast_file : Path
+        Path to the input BOLD estimate file (e.g., beta-series or contrast map).
+    mask_type : str, optional
+        Type of mask to apply. One of {"brain", "roi"} (default: "brain").
+    roi_mask_name : str, optional
+        Filename of the ROI mask (required if mask_type="roi").
+
+    Returns
+    -------
+    data : np.ndarray
+        Unscaled voxel data with shape (timepoints x voxels) if applicable.
+    masker : NiftiMasker
+        Fitted NiftiMasker object for inverse transforms.
+
+    Raises
+    ------
+    FileNotFoundError
+        If `contrast_file` or the specified ROI mask file does not exist.
+    ValueError
+        If `mask_type` is invalid or `roi_mask_name` is missing for an ROI mask.
+    """
+
+    # Check that the input contrast file exists
+    contrast_file = Path(contrast_file)
+    if not contrast_file.exists():
+        raise FileNotFoundError(f'Contrast file does not exist: {contrast_file}')
+
+    if mask_type == 'brain':
+        brain_mask_file = Path(cfg.masks_dir) / 'brain_mask.nii.gz'
+        if not brain_mask_file.exists():
+            raise FileNotFoundError(f'Brain mask not found: {brain_mask_file}')
+
+        masker = NiftiMasker(mask_img=brain_mask_file, standardize=False)
+        data = masker.fit_transform(contrast_file)
+        return data, masker
+
+    if mask_type == 'roi':
+        if roi_mask_name is None:
+            raise ValueError("roi_mask_name must be provided for mask_type='roi'.")
+
+        roi_mask_file = Path(cfg.masks_dir) / roi_mask_name
+        if not roi_mask_file.exists():
+            raise FileNotFoundError(f'ROI mask file does not exist: {roi_mask_file}')
+
+        # Resample ROI mask to match the BOLD file dimensions
+        roi_mask_resamp = resample_to_img(
+            roi_mask_file,
+            contrast_file,
+            interpolation='nearest',
+            force_resample=True,
+            copy_header=True,
+        )
+
+        masker = NiftiMasker(mask_img=roi_mask_resamp, standardize=False)
+        data = masker.fit_transform(contrast_file)
+        return data, masker
+
+    raise ValueError(f'Unknown mask_type: {mask_type!r}')

@@ -160,7 +160,7 @@ def get_exclusion_data(cfg: Config) -> pd.DataFrame:
     Load and preprocess the suggested_exclusions.csv file.
 
     Steps:
-    - Read exclusions CSV from the BIDS directory under cfg.data_root.
+    - Read exclusions CSV from the BIDS directory under cfg.bids_dir.
     - Rename the 'Unnamed: 0' column to 'subject_task'.
     - Split 'subject_task' into 'subject' and 'task' columns.
     - Filter rows for task == 'discountFix'.
@@ -169,14 +169,14 @@ def get_exclusion_data(cfg: Config) -> pd.DataFrame:
     Parameters
     ----------
     cfg : Config
-        Configuration object containing data_root path.
+        Configuration object containing bids_dir path.
 
     Returns
     -------
     pd.DataFrame
         Cleaned exclusions data for the discountFix task.
     """
-    exclusion_file = cfg.data_root / 'BIDS' / 'suggested_exclusions.csv'
+    exclusion_file = cfg.bids_dir / 'suggested_exclusions.csv'
 
     if not exclusion_file.exists():
         raise FileNotFoundError(f'Exclusion file not found: {exclusion_file}')
