@@ -8,13 +8,19 @@ code_dir: "analyses/pattern_similarity_exploration"
 script_entry: "None"
 notebook_entry: 
   - "motor_roi_exploration.ipynb"
+  - "secondary_exploration.ipynb"
 output_dir: "analyses/pattern_similarity_exploration (contains summary pdf)"
 hypothesis: >
    Do relationships we expect to be present in the motor ROI exist?  
    Do RSA values differ by choice and do they relate to RT distance?
 conclusion: >
   WIP, but aside from a weak correlation between BOLD/RT distances, 
-  I don't see much here.
+  I don't see much here.  The secondary analyses further explore that 
+  the patterns seen in the distance matrices are driven by onset
+  time differences.  Among other things, similar patterns persist
+  even when voxels are randomly selected across the brain.  Perhaps
+  the poor highpass filter (higher range causes collinearity increases)
+  is part of the issue, but I do not know.
 notes: "Get feedback from Josh"
 status: "in progress"
 last_updated: 2025-10-20
