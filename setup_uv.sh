@@ -12,5 +12,5 @@ module load uv
 
 export UV_PYTHON=$(which python3)
 
-PROJECT_ROOT="/oak/stanford/groups/russpold/data/uh2/aim1/analysis_code/delay_discounting_mvpa"
-export UV_CACHE_DIR=$PROJECT_ROOT/uv_cache
+export UV_CACHE_DIR="/oak/stanford/groups/russpold/uv_cache_pool/uv_cache_jmumford"
+
