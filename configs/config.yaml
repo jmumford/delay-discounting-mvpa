@@ -16,5 +16,5 @@ mask_data_suffix: "*MNI152NLin2009cAsym_desc-brain_mask.nii.gz"
 behav_func_glob: "ses*/func/"
 behav_data_suffix: "*events.tsv"
 # ROI mask location
-masks_dir: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/masks
+masks_dir: /oak/stanford/groups/russpold/data/uh2/aim1/derivatives/delay_discounting_mvpa/masks
 tr: 0.68
